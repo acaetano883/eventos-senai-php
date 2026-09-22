@@ -1,12 +1,13 @@
 <?php
+require_once 'init.php';
 
 $id = null;
-$eventsoAtual = null;
+$eventoAtual = null;
 
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
     $id = $_GET["id"];
     
-    // Valida se o ID existe dentro do array na sessão
+    // Valida se a sessão e o ID existem
     if (isset($_SESSION["eventos"][$id])) {
         $eventoAtual = $_SESSION["eventos"][$id];
     }
@@ -24,13 +25,17 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
 
     <!-- Lista de itens cadastrados na sessão -->
     <ul>
-        <?php foreach ($_SESSION["eventos"] as $eventoChave => $evento): ?>
-            <li>
-                <a href="validar.php?id=<?= $eventoChave ?>">
-                    <?= $evento["titulo"] ?>
-                </a>
-            </li>
-        <?php endforeach; ?>
+        <?php if (isset($_SESSION["eventos"]) && !empty($_SESSION["eventos"])): ?>
+            <?php foreach ($_SESSION["eventos"] as $eventoChave => $evento): ?>
+                <li>
+                    <a href="validar.php?id=<?= $eventoChave ?>">
+                        <?= htmlspecialchars($evento["titulo"]) ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <li>Nenhum evento cadastrado.</li>
+        <?php endif; ?>
     </ul>
 
     <!-- Fluxo condicional de exibição -->
@@ -42,11 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
             <input type="hidden" name="id" value="<?= $id ?>">
 
             <label for="titulo">Título:</label>
-            <input type="text" id="titulo" name="titulo" value="<?= $eventoAtual["titulo"] ?>" disabled>
+            <input type="text" id="titulo" name="titulo" value="<?= htmlspecialchars($eventoAtual["titulo"]) ?>" disabled>
             <br>
 
             <label for="descricao">Descrição:</label>
-            <input type="text" id="descricao" name="descricao" value="<?= $eventoAtual["descricao"] ?>" disabled>
+            <input type="text" id="descricao" name="descricao" value="<?= htmlspecialchars($eventoAtual["descricao"]) ?>" disabled>
             <br>
 
             <button type="submit">Confirmar / Enviar</button>
