@@ -53,74 +53,61 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
-
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
 
 <head>
-    <title>Editar evento</title>
+    <meta charset="UTF-8">
+    <title>Editar Evento</title>
 </head>
 
 <body>
 
-<h1>Editar evento</h1>
+    <h1>Editar Evento</h1>
 
-<form method="POST">
+    <form method="POST">
 
-    <input type="hidden" name="id" value="<?php echo $evento['id']; ?>">
+        <input type="hidden" name="id" value="<?php echo $evento['id']; ?>">
 
-    <p>
-        Título:
-        <input type="text" name="titulo" required
-        value="<?php echo $evento['titulo']; ?>">
-    </p>
+        <label>Título:</label>
+        <input type="text" name="titulo" value="<?php echo $evento['titulo']; ?>">
+        <br><br>
 
-    <p>
-        Descrição:
-        <input type="text" name="descricao" required
-        value="<?php echo $evento['descricao']; ?>">
-    </p>
+        <label>Descrição:</label>
+        <textarea name="descricao"><?php echo $evento['descricao']; ?></textarea>
+        <br><br>
 
-    <p>
-        Área:
-        <input type="text" name="area" required
-        value="<?php echo $evento['area']; ?>">
-    </p>
+        <label>Área:</label>
+        <input type="text" name="area" value="<?php echo $evento['area']; ?>">
+        <br><br>
 
-    <p>
-        Data:
-        <input type="date" name="data" required
-        value="<?php echo $evento['data']; ?>">
-    </p>
+        <label>Data:</label>
+        <input type="date" name="data" value="<?php echo $evento['data']; ?>">
+        <br><br>
 
-    <p>
-        Início:
-        <input type="time" name="inicio" required
-        value="<?php echo $evento['inicio']; ?>">
-    </p>
+        <label>Início:</label>
+        <input type="time" name="inicio" value="<?php echo $evento['inicio']; ?>">
+        <br><br>
 
-    <p>
-        Fim:
-        <input type="time" name="fim" required
-        value="<?php echo $evento['fim']; ?>">
-    </p>
+        <label>Fim:</label>
+        <input type="time" name="fim" value="<?php echo $evento['fim']; ?>">
+        <br><br>
 
-    <p>
-        Local:
-        <input type="text" name="local" required
-        value="<?php echo $evento['local']; ?>">
-    </p>
+        <label>Local:</label>
+        <input type="text" name="local" value="<?php echo $evento['local']; ?>">
+        <br><br>
 
-    <p>
-        Responsável:
-        <input type="text" name="responsavel" required
-        value="<?php echo $evento['responsavel']; ?>">
-    </p>
+        <label>Responsável:</label>
+        <input type="text" name="responsavel" value="<?php echo $evento['responsavel']; ?>">
+        <br><br>
 
-    <input type="submit" value="Salvar alterações">
+        <button type="submit">Salvar</button>
 
-</form>
+    </form>
 
-<a href="index.php">Voltar</a>
+    <br>
+
+    <a href="index.php">Voltar</a>
 
 </body>
 
