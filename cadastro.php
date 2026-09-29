@@ -1,14 +1,14 @@
 <?php
 require_once 'init.php';
 
-// Garante que a chave proximo_id existe na sessão
+
 if (!isset($_SESSION["proximo_id"])) {
     $_SESSION["proximo_id"] = 1;
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // Verifica se TODOS os campos obrigatórios foram enviados
+    
     if (
         isset($_POST["titulo"]) &&
         isset($_POST["descricao"]) &&
