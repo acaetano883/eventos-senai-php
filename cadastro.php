@@ -22,17 +22,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $id = $_SESSION["proximo_id"];
 
-        $_SESSION["eventos"][$id] = [
-            "id"          => $id,
-            "titulo"      => $_POST["titulo"],
-            "descricao"   => $_POST["descricao"],
-            "area"        => $_POST["area"],
-            "data"        => $_POST["data"],
-            "inicio"      => $_POST["inicio"],
-            "fim"         => $_POST["fim"],
-            "local"       => $_POST["local"],
-            "responsavel" => $_POST["responsavel"]
-        ];
+       $_SESSION["eventos"][$id] = [
+    "id"          => $id,
+    "titulo"      => $_POST["titulo"],
+    "descricao"   => $_POST["descricao"],
+    "area"        => $_POST["area"],
+    "data"        => $_POST["data"],
+    "inicio"      => $_POST["inicio"],
+    "fim"         => $_POST["fim"],
+    "local"       => $_POST["local"],
+    "responsavel" => $_POST["responsavel"],
+    "vagas"       => (int) $_POST["vagas"],
+    "status"      => "ativo",
+    "inscritos"   => []
+    ];
 
         $_SESSION["proximo_id"]++;
 
@@ -83,6 +86,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <button type="submit">Cadastrar</button>
 
 </form>
+
+<label>Vagas:</label>
+<input type="number" name="vagas" min="1" required>
+<br><br>
 
 </body>
 </html>
