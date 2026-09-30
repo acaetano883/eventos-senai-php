@@ -25,7 +25,7 @@ $eventos = $_SESSION['eventos'] ?? [];
                     <a href="detalhes.php?id=<?= $index ?>">detalhes</a>
                     <a href="edicao.php?id=<?= $index ?>">editar</a>
                     <a href="remocao.php?id=<?= $index ?>">Remover</a>
-                    <a href="inscricaoPessoa.php?id=<? $index ?>">Inscrever-se</a>
+                    <a href="inscricaoPessoa.php?evento_id=<?= $evento['id'] ?>">Inscrever-se</a>
                     <br>
                 </li>
             <?php endforeach; ?>
